@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - run:
           name: Install Client Dependencies
           command: cd client && npm install
       - run:
@@ -17,6 +20,9 @@ jobs:
       - image: mongo:4.2.0
     steps:
       - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
       - run:
           name: Install Server Dependencies
           command: cd server && npm install
