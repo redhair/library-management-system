@@ -1,6 +1,5 @@
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
 const express = require('express');
 const compression = require('compression');
 const helmet = require('helmet');
@@ -9,11 +8,7 @@ const fs = require('fs');
 const https = require('https');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const path = require('path');
-const port = 3001;
 const sslport = 3443;
-
-dotenv.load();
 
 mongoose.connect(`mongodb://127.0.0.1:27017/psychology-today`, {
   useCreateIndex: true,
