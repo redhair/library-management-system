@@ -5,8 +5,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test
-          command: npm test
+          name: Install Client Dependencies
+          command: cd client && npm install
+      - run:
+          name: Build and test client
+          command: npm run build && npm run test
   server:
     docker:
       - image: circleci/node:10.16.3
@@ -14,7 +17,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: start
+          name: Install Server Dependencies
+          command: cd server && npm install
+      - run:
+          name: Run server
           command: npm start
 workflows:
   version: 2
