@@ -1,3 +1,4 @@
+version: 2.1
 jobs:
   client:
     docker:
@@ -23,7 +24,7 @@ jobs:
           name: Run server
           command: cd server && npm start
 workflows:
-  version: 2
+  version: 2.1
   client_and_server:
     jobs:
       - client
