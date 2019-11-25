@@ -1,3 +1,7 @@
+# Library Management System
+
+[![CircleCI](https://circleci.com/gh/redhair/library-managemenet-system/tree/master.svg?style=svg)](https://circleci.com/gh/redhair/library-managemenet-system/tree/master)
+
 # Client TODO
 
 - Make Alerts Float
