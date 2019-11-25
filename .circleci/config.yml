@@ -9,7 +9,7 @@ jobs:
           command: cd client && npm install
       - run:
           name: Build and test client
-          command: npm run build && npm run test
+          command: cd client && npm run build && npm run test
   server:
     docker:
       - image: circleci/node:10.16.3
@@ -21,7 +21,7 @@ jobs:
           command: cd server && npm install
       - run:
           name: Run server
-          command: npm start
+          command: cd server && npm start
 workflows:
   version: 2
   client_and_server:
