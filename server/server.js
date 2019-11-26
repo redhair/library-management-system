@@ -10,7 +10,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const sslport = 3443;
 
-mongoose.connect(`mongodb://127.0.0.1:27017/psychology-today`, {
+mongoose.connect(`mongodb://127.0.0.1:27017/library-management-system`, {
   useCreateIndex: true,
   useUnifiedTopology: true,
   useNewUrlParser: true
