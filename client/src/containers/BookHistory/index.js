@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Table from '../../components/Table';
-import Alert from '../../components/Alert';
+import { AlertContext } from '../../components/AlertProvider';
+
 import Button from '../../components/Button';
 import { EventAPI, BookAPI } from '../../api';
 
 export default function BookHistory(props) {
   const [events, setEvents] = useState([]);
-  const [alert, setAlert] = useState();
+  const { makeAlert } = useContext(AlertContext);
 
   useEffect(() => {
     EventAPI.getAll(props.match)
@@ -34,7 +35,7 @@ export default function BookHistory(props) {
               BookAPI.update(event.bookState)
                 .then(res => {
                   if (res.status === 200) {
-                    setAlert({ type: 'success', message: 'Book successfully restored' });
+                    makeAlert({ type: 'success', message: 'Book successfully restored' });
                   }
                 })
                 .catch(err => console.error({ err }));
@@ -50,7 +51,6 @@ export default function BookHistory(props) {
     <>
       <Link to={`/books/${props.match.params.id}`}>Back to Details</Link>
       <h4 style={{ marginTop: '50px' }}>Audit Trail</h4>
-      {alert && <Alert type={alert.type}>{alert.message}</Alert>}
       <Table style={{ marginTop: '16px' }} rows={rows} headers={['Timestamp', 'Book State', 'Event Type', 'Actions']} />
     </>
   );

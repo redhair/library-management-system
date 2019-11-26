@@ -2,16 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/redhair/library-managemenet-system/tree/master.svg?style=shield)](https://circleci.com/gh/redhair/library-managemenet-system/tree/master)
 
-# Client TODO
-
-- Make Alerts Float
-- Favicon
-- Remove Homepage
-
-# Server TODO
-
-- Nothing
-
 To get started:
 
 1. `git clone https://github.com/redhair/library-management-system.git`

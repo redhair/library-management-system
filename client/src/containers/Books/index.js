@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Book from '../../components/Book';
-import Alert from '../../components/Alert';
+import { AlertContext } from '../../components/AlertProvider';
 import Button from '../../components/Button';
 import { Row } from '../../components/Grid';
 import { BookAPI } from '../../api';
@@ -28,7 +28,7 @@ const SearchBox = styled.input`
 export default function Books() {
   const [books, setBooks] = useState([]);
   const [needle, setNeedle] = useState('');
-  const [alert, setAlert] = useState();
+  const { makeAlert } = useContext(AlertContext);
   const [loading, setLoading] = useState(true);
 
   function booksFilter(book) {
@@ -58,8 +58,6 @@ export default function Books() {
 
   return (
     <>
-      {alert && <Alert type={alert.type}>{alert.message}</Alert>}
-
       <Row align="center" style={{ margin: 'auto', width: '100%', maxWidth: '700px' }}>
         <SearchBox
           placeholder="Search by title, author, or ISBN"
@@ -90,12 +88,12 @@ export default function Books() {
                       e.preventDefault();
                       e.stopPropagation();
                       if (!b.available) {
-                        return setAlert({ type: 'warning', message: `${b.title} is already checked out.` });
+                        return makeAlert({ type: 'warning', message: `${b.title} is already checked out.` });
                       }
                       BookAPI.update({ ...b, available: false })
                         .then(res => {
                           if (res.status === 200) {
-                            setAlert({ type: 'success', message: `${b.title} was successfully checked out` });
+                            makeAlert({ type: 'success', message: `${b.title} was successfully checked out` });
                             fetchBooks();
                           }
                         })
@@ -111,12 +109,12 @@ export default function Books() {
                       e.preventDefault();
                       e.stopPropagation();
                       if (b.available) {
-                        return setAlert({ type: 'warning', message: `${b.title} is already checked in.` });
+                        return makeAlert({ type: 'warning', message: `${b.title} is already checked in.` });
                       }
                       BookAPI.update({ ...b, available: true })
                         .then(res => {
                           if (res.status === 200) {
-                            setAlert({ type: 'success', message: `${b.title} was successfully checked in` });
+                            makeAlert({ type: 'success', message: `${b.title} was successfully checked in` });
                             fetchBooks();
                           }
                         })

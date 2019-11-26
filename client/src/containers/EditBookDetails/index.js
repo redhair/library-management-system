@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Prompt } from 'react-router';
 import { Link, Redirect } from 'react-router-dom';
-import Alert from '../../components/Alert';
+import { AlertContext } from '../../components/AlertProvider';
 import BookForm from '../../components/BookForm';
 import { BookAPI } from '../../api';
 
@@ -13,7 +13,7 @@ export default function BookDetails(props) {
     description: ''
   });
   const [dirty, setDirty] = useState(false);
-  const [alert, setAlert] = useState();
+  const { makeAlert } = useContext(AlertContext);
   const [redirect, setRedirect] = useState(false);
 
   function updateBookInfo(e) {
@@ -39,14 +39,13 @@ export default function BookDetails(props) {
       <Prompt when={dirty} message="Are you sure you want to leave?" />
       <Link to={`/books/${props.match.params.id}`}>Back to Details</Link>
       <h4 style={{ marginBottom: '16px', marginTop: '50px' }}>Edit Book Details</h4>
-      {alert && <Alert type={alert.type}>{alert.message}</Alert>}
       <BookForm
         onSubmit={e => {
           e.preventDefault();
           BookAPI.update(book)
             .then(res => {
               if (res.status === 200) {
-                setAlert({ type: 'success', message: 'Book Successfully Updated' });
+                makeAlert({ type: 'success', message: 'Book Successfully Updated' });
                 setDirty(false);
                 setRedirect(true);
               }
