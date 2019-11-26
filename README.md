@@ -1,6 +1,6 @@
 # Library Management System
 
-[![CircleCI](https://circleci.com/gh/redhair/library-managemenet-system/tree/master.svg?style=shield)](https://circleci.com/gh/redhair/library-managemenet-system/tree/master)
+[![CircleCI](https://circleci.com/gh/redhair/library-management-system.svg?style=shield)](https://circleci.com/gh/redhair/library-management-system)
 
 To get started:
 
