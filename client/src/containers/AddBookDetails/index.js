@@ -22,13 +22,13 @@ export default function BookDetails(props) {
   }
 
   if (redirect) {
-    return <Redirect to="/books" />;
+    return <Redirect to="/" />;
   }
 
   return (
     <>
       <Prompt when={dirty} message="Are you sure you want to leave?" />
-      <Link to="/books">Back to Library</Link>
+      <Link to="/">Back to Library</Link>
       <h4 style={{ marginBottom: '16px', marginTop: '50px' }}>Add New Book</h4>
       <BookForm
         onSubmit={e => {

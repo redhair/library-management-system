@@ -19,7 +19,6 @@ export default function App() {
         <AlertProvider>
           <Switch>
             <Layout exact path={`/`} component={Books} />
-            <Layout exact path={`/books`} component={Books} />
             <Layout exact path={`/books/add`} component={AddBookDetails} />
             <Layout exact path={`/books/:id`} component={BookDetails} />
             <Layout exact path={`/books/:id/edit`} component={EditBookDetails} />

@@ -28,7 +28,7 @@ export default function BookDetails(props) {
   }, [props, props.match.params]);
 
   if (redirect === true) {
-    return <Redirect to="/books" />;
+    return <Redirect to="/" />;
   }
 
   return (
@@ -71,7 +71,7 @@ export default function BookDetails(props) {
           </Button>
         </Row>
       </Modal>
-      <Link to="/books" style={{ marginBottom: '50px' }}>
+      <Link to="/" style={{ marginBottom: '50px' }}>
         Back to Library
       </Link>
       <h4 style={{ marginTop: '50px' }}>Actions</h4>

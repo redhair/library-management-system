@@ -21,7 +21,7 @@ const Link = styled(NavLink)`
 const nav = [
   {
     name: 'Library',
-    href: '/books'
+    href: '/'
   },
   {
     name: 'Report',
